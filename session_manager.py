@@ -1,5 +1,6 @@
 from file_handler import save_session
 from datetime import datetime
+from study_session import StudySession
 def add_study_session():
     print("\n Add Study Session\n")
     subject = input("Subject: ")
@@ -8,12 +9,14 @@ def add_study_session():
     notes = input("Notes: ")
     date = datetime.now().strftime("%d-%m-%Y")
 
-    print("\n===Study Session===\n")
-    print(f"Date: {date}")
-    print(f"Subject: {subject}")
-    print(f"Hours: {hours}")
-    print(f"Productivity: {productivity}")
-    print(f"Notes: {notes}")
+    session = StudySession(
+        date, subject, hours, productivity, notes)
+    
+    save_session(session)
 
-    save_session(date, subject, hours, productivity, notes)
+    
+    session.display()
+
+
+        
     print("\nStudy Session saved successfully!")    

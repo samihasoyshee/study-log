@@ -19,7 +19,18 @@ def view_all_sessions():
     sessions = load_sessions()
     for session in sessions:
         session.display()
+    
+print("\nStudy Session saved successfully!")  
 
+def search_by_subject():
+    subject = input("Enter your subject: ")
 
-        
-print("\nStudy Session saved successfully!")    
+    sessions = load_sessions()
+
+    found= False
+    for session in sessions:
+        if subject == session.subject:
+            session.display()
+            found = True
+    if not found:
+        print("No study session found!")
